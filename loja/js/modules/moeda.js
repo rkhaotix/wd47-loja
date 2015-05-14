@@ -1,7 +1,13 @@
-function numberParaReal(numero) {
-	return "R$ " + numero.toFixed(2).replace(".", ",");
-}
+var formataMoeda = (function(){
+		var simbolo = "R$ ";
 
-function realParaNumber(texto) {
-	return parseFloat(texto.replace("R$ ", "").replace(",", "."));
-}
+		return {
+		numberParaReal : function(numero) {
+			return simbolo + numero.toFixed(2).replace(".", ",");
+		},
+
+		realParaNumber : function(texto) {
+			return parseFloat(texto.replace(simbolo, "").replace(",", "."));
+		}
+	};
+})();

@@ -26,3 +26,27 @@ $("[type=text]").keyup(function(event){
 $(".sugestoes").on("dblclick", "li", function(event) {
 	$(this).remove();
 });
+
+
+
+(function($){
+	"use strict";
+	
+	$("[type=text").autocomplete({
+		source: function(entrada, resposta) {
+			var sugestoesParecidas = [];
+			var novaSugestao = new RegExp(entrada.term, "i");
+			
+			$(".sugestao").each(function() {
+				var sugestaoExistente = $(this).text();
+				if(sugestaoExistente.match(novaSugestao))
+					sugestoesParecidas.push(sugestaoExistente);
+			});
+			
+			
+			resposta(sugestoesParecidas);
+		}
+	});
+	
+	
+})(jQuery);
