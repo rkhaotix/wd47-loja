@@ -2,6 +2,11 @@ var painel = $("#recomendacoes");
 
 setInterval(function() {
 $.getJSON("http://mirrorfashion.caelum.com.br/produtos?callback=?", function(retorno) {
+	$(document).trigger("novasRecomendacoes", retorno);
+});
+}, 2000);
+
+$(document).on("novasRecomendacoes", function(event, retorno) {
 	var ul = $("<ul>");
 	
 	$.each(retorno.produtos, function() {
@@ -15,4 +20,9 @@ $.getJSON("http://mirrorfashion.caelum.com.br/produtos?callback=?", function(ret
 	$("ul", painel).remove();
 	ul.appendTo(painel);
 });
-}, 2000);
+
+$(document).one("novasRecomendacoes", function(event, retorno) {
+	$("<a>").text("Novas Recomendações").addClass("aviso-recomendacao")
+	.attr("href","#recomendacoes").insertAfter(".aviso");
+	
+});
