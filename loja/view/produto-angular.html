@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
   <head>
     <title>Mirror Fashion</title>
     <meta charset="utf-8">
@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/produto.css">
   </head>
-  <body>
+  <body ng-controller="SacolaController">
      
     <header class="container">
       <h1>Mirror Fashion</h1>
 
       <p class="sacola">
-        Há itens em sua sacola de compras
+        Você tem {{ sacola.obterTotal() }} produto(s) na sacola
       </p>
 
       <nav class="menu-setores">
@@ -35,7 +35,7 @@
 
        <p class="descricao">Produto de alta qualidade, importado diretamente da Zâmbia com textura inigualável.</p>
 
-      <a href="" class="comprar">Comprar</a>
+      <a href="" class="comprar" ng-click="comprar()">Comprar</a>
     </div>
 
     <footer>
@@ -48,5 +48,8 @@
         </ul>
       </div>
     </footer>
+    <script src="../js/lib/angular.js"></script>
+	<script src="../js/model/Sacola.js"></script>
+	<script src="../js/controller/SacolaController.js"></script>
   </body>
 </html>
